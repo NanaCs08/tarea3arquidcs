@@ -19,6 +19,7 @@
           >
             Comprar
           </button>
+
         </li>
       </ul>
     </main>
@@ -57,13 +58,20 @@ const generateSlug = (text) => {
 
 onMounted(() => {
   importAviones();
-  if (typeof window !== 'undefined' && window.Snipcart) {
-    window.Snipcart.init({
-      publicApiKey: 'ZDU3NDg5NzEtZGNhZS00NjgxLTkxYzAtNjE5OTA4ZTk0ZWM5NjM4NjY0NTc4NDc3NTk4Mjc5',
-      currency: 'usd' // Cambia a la moneda que estés usando
-    });
+
+  if (typeof window !== 'undefined') {
+    const checkSnipcartLoaded = setInterval(() => {
+      if (window.Snipcart && window.Snipcart.ready) {
+        clearInterval(checkSnipcartLoaded);
+        window.Snipcart.init({
+          publicApiKey: 'ZDU3NDg5NzEtZGNhZS00NjgxLTkxYzAtNjE5OTA4ZTk0ZWM5NjM4NjY0NTc4NDc3NTk4Mjc5',
+          currency: 'usd' // Cambia esto si usas otra moneda
+        });
+      }
+    }, 100); // Verificar cada 100 ms hasta que Snipcart esté listo
   }
 });
+
 </script>
 
 <style scoped>
