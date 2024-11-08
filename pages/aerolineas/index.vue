@@ -1,29 +1,40 @@
 <template>
-  <div>
+  <div class="container my-5">
     <Header />
-    <div>
-      <h1>Lista de Aerolíneas</h1>
-      <ul>
-        <li v-for="aerolinea in aerolineas" :key="aerolinea.nombre">
-          <nuxt-link :to="`/aerolineas/${aerolinea.nombre}`">{{ aerolinea.nombre }}</nuxt-link>
+    <div class="text-center mb-4">
+      <h1 class="display-4">Lista de Aerolíneas</h1>
+    </div>
+    <main>
+      <ul class="list-unstyled row">
+        <li v-for="aerolinea in aerolineas" :key="aerolinea.nombre" class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ aerolinea.nombre }}</h5>
+              <nuxt-link :to="`/aerolineas/${aerolinea.nombre}`" class="btn btn-link">
+                Ver detalles
+              </nuxt-link>
+              <button
+                class="btn btn-primary snipcart-add-item"
+                :data-item-id="'aerolinea-' + aerolinea.nombre"
+                :data-item-name="aerolinea.nombre"
+                data-item-price="250.00"
+                :data-item-url="`/aerolineas/${aerolinea.nombre}`"
+                data-item-description="Descripción de la aerolínea"
+              >
+                Comprar
+              </button>
+            </div>
+          </div>
         </li>
       </ul>
-    </div>
-    <li v-for="aerolinea in aerolineas" :key="aerolinea.nombre">
-      <nuxt-link :to="`/aerolineas/${aerolinea.nombre}`">{{ aerolinea.nombre }}</nuxt-link>
-      <button
-        class="snipcart-add-item"
-        data-item-id="aerolinea-{{ aerolinea.nombre }}"
-        data-item-name="{{ aerolinea.nombre }}"
-        data-item-price="250.00" <!-- Cambia el precio según tu necesidad -->
-        data-item-url="/aerolineas/{{ aerolinea.nombre }}"
-        data-item-description="Descripción de la aerolínea"
-      >
-        Comprar
-      </button>
-    </li>
-
+    </main>
     <Footer />
+    <div
+      id="snipcart"
+      hidden
+      data-api-key="ZDU3NDg5NzEtZGNhZS00NjgxLTkxYzAtNjE5OTA4ZTk0ZWM5NjM4NjY0NTc4NDc3NTk4Mjc5"
+      data-config-modal-style="side"
+    ></div>
   </div>
 </template>
 
@@ -47,17 +58,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  text-align: center;
-  margin: 0.5rem 0;
-}
+/* Puedes agregar estilos personalizados aquí si lo necesitas */
 </style>

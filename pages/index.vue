@@ -1,34 +1,44 @@
 <template>
-  <div>
+  <div class="container my-5">
     <Header />
-    <div>
-      <h1>Bienvenido a nuestro Catálogo de Aviones</h1>
-      <p>Explora nuestras secciones para conocer más sobre aviones, fabricantes y aerolíneas.</p>
+    <div class="text-center mb-4">
+      <h1 class="display-4">Bienvenido a nuestro Catálogo de Aviones</h1>
+      <p class="lead">Explora nuestras secciones para conocer más sobre aviones, fabricantes y aerolíneas.</p>
     </div>
     <main>
-      <ul>
-        <li v-for="avion in aviones" :key="avion.modelo">
-          <nuxt-link :to="{ path: `/aviones/${generateSlug(avion.modelo)}` }">{{ avion.modelo }}</nuxt-link>
-          <button
-            class="snipcart-add-item"
-            :data-item-id="'avion-' + avion.modelo"
-            :data-item-name="avion.modelo"
-            data-item-price="150.00" 
-            :data-item-url="'/aviones/' + generateSlug(avion.modelo)"
-            data-item-description="Descripción del avión"
-          >
-            Comprar
-          </button>
-
+      <ul class="list-unstyled row">
+        <li v-for="avion in aviones" :key="avion.modelo" class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ avion.modelo }}</h5>
+              <nuxt-link :to="{ path: `/aviones/${generateSlug(avion.modelo)}` }" class="btn btn-link">
+                Ver detalles
+              </nuxt-link>
+              <button
+                class="btn btn-primary snipcart-add-item"
+                :data-item-id="'avion-' + avion.modelo"
+                :data-item-name="avion.modelo"
+                data-item-price="150.00"
+                :data-item-url="'/aviones/' + generateSlug(avion.modelo)"
+                data-item-description="Descripción del avión"
+              >
+                Comprar
+              </button>
+            </div>
+          </div>
         </li>
       </ul>
     </main>
     <Footer />
+    <!-- Div necesario para Snipcart -->
+    <div
+      id="snipcart"
+      hidden
+      data-api-key="ZDU3NDg5NzEtZGNhZS00NjgxLTkxYzAtNjE5OTA4ZTk0ZWM5NjM4NjY0NTc4NDc3NTk4Mjc5"
+      data-config-modal-style="side"
+    ></div>
   </div>
 </template>
-
-
-
 
 <script setup>
 import Header from '@/components/header.vue';
@@ -71,25 +81,8 @@ onMounted(() => {
     }, 100); // Verificar cada 100 ms hasta que Snipcart esté listo
   }
 });
-
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
-
-p {
-  text-align: center;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  text-align: center;
-  margin: 0.5rem 0;
-}
+/* No es necesario mucho CSS adicional ya que Bootstrap maneja la mayor parte del diseño */
 </style>

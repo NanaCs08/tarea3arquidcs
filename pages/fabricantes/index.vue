@@ -1,29 +1,40 @@
 <template>
-  <div>
+  <div class="container my-5">
     <Header />
-    <div>
-      <h1>Lista de Fabricantes</h1>
-      <ul>
-        <li v-for="fabricante in fabricantes" :key="fabricante.nombre">
-          <nuxt-link :to="`/fabricantes/${fabricante.nombre}`">{{ fabricante.nombre }}</nuxt-link>
+    <div class="text-center mb-4">
+      <h1 class="display-4">Lista de Fabricantes</h1>
+    </div>
+    <main>
+      <ul class="list-unstyled row">
+        <li v-for="fabricante in fabricantes" :key="fabricante.nombre" class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ fabricante.nombre }}</h5>
+              <nuxt-link :to="`/fabricantes/${fabricante.nombre}`" class="btn btn-link">
+                Ver detalles
+              </nuxt-link>
+              <button
+                class="btn btn-primary snipcart-add-item"
+                :data-item-id="'fabricante-' + fabricante.nombre"
+                :data-item-name="fabricante.nombre"
+                data-item-price="200.00"
+                :data-item-url="`/fabricantes/${fabricante.nombre}`"
+                data-item-description="Descripción del fabricante"
+              >
+                Comprar
+              </button>
+            </div>
+          </div>
         </li>
       </ul>
-    </div>
-    <li v-for="fabricante in fabricantes" :key="fabricante.nombre">
-      <nuxt-link :to="`/fabricantes/${fabricante.nombre}`">{{ fabricante.nombre }}</nuxt-link>
-      <button
-        class="snipcart-add-item"
-        data-item-id="fabricante-{{ fabricante.nombre }}"
-        data-item-name="{{ fabricante.nombre }}"
-        data-item-price="200.00" <!-- Cambia el precio según tu necesidad -->
-        data-item-url="/fabricantes/{{ fabricante.nombre }}"
-        data-item-description="Descripción del fabricante"
-      >
-        Comprar
-      </button>
-    </li>
-
+    </main>
     <Footer />
+    <div
+      id="snipcart"
+      hidden
+      data-api-key="ZDU3NDg5NzEtZGNhZS00NjgxLTkxYzAtNjE5OTA4ZTk0ZWM5NjM4NjY0NTc4NDc3NTk4Mjc5"
+      data-config-modal-style="side"
+    ></div>
   </div>
 </template>
 
@@ -47,17 +58,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-h1 {
-  text-align: center;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  text-align: center;
-  margin: 0.5rem 0;
-}
+/* Puedes agregar estilos personalizados aquí si lo necesitas */
 </style>

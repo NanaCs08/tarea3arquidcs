@@ -1,35 +1,24 @@
 <template>
-    <div class="row"  style="margin-top: 15px">
-      <NuxtLink class="two columns button button-primary" to="/">
-        Home</NuxtLink>
-      <NuxtLink class="two columns button button-primary" to="/aviones">
-        Aviones</NuxtLink>
-      <NuxtLink class="two columns button button-primary" to="/fabricantes">
-        Fabricantes</NuxtLink>
-      <NuxtLink class="three columns button button-primary" to="/aerolineas">Aerolineas</NuxtLink>
-      <button class="snipcart-checkout">
-        <span class="snipcart-items-count">0</span> Tiquets in the 🛒
-      </button>
-
+  <header class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex gap-3">
+          <NuxtLink class="btn btn-outline-light" to="/">Home</NuxtLink>
+          <NuxtLink class="btn btn-outline-light" to="/aviones">Aviones</NuxtLink>
+          <NuxtLink class="btn btn-outline-light" to="/fabricantes">Fabricantes</NuxtLink>
+          <NuxtLink class="btn btn-outline-light" to="/aerolineas">Aerolíneas</NuxtLink>
+        </div>
+        <button class="btn btn-primary snipcart-checkout">
+          <span class="snipcart-items-count">0</span> Tiquets in the 🛒
+        </button>
+      </div>
     </div>
-  </template>
+  </header>
+</template>
 
 <style scoped>
+/* Ajusta el espacio y la alineación si es necesario */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15rem;
-    justify-content: center;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
+  border-bottom: 1px solid #444;
 }
 </style>

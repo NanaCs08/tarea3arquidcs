@@ -1,14 +1,15 @@
 <template>
-    <footer>
-        <p>© 2024 Tu Proyecto de Aviones - Biron Aguilar - Dania Cespedes</p>
+    <footer class="bg-dark text-white text-center py-3">
+      <div class="container">
+        <p class="mb-0">© 2024 Tu Proyecto de Aviones - Biron Aguilar - Dania Cespedes</p>
+      </div>
     </footer>
-</template>
-
-<style scoped>
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-}
-</style>
+  </template>
+  
+  <style scoped>
+  /* Ajusta el espacio si es necesario */
+  footer {
+    border-top: 1px solid #444;
+  }
+  </style>
+  
