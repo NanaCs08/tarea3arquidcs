@@ -7,7 +7,10 @@
       <NuxtLink class="two columns button button-primary" to="/fabricantes">
         Fabricantes</NuxtLink>
       <NuxtLink class="three columns button button-primary" to="/aerolineas">Aerolineas</NuxtLink>
-          <button class="snipcart-checkout three columns button"><span class="snipcart-items-count">0</span> Tiquets in the 🛒 </button>
+      <button class="snipcart-checkout">
+        <span class="snipcart-items-count">0</span> Tiquets in the 🛒
+      </button>
+
     </div>
   </template>
 
